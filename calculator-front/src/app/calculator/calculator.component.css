@@ -1,0 +1,60 @@
+#root {
+    padding: 20px;
+}
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.display-screen {
+    width: 460px;
+    height: 150px;
+    background-color: white;
+} 
+.row {
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 20px; 
+}
+#up {
+    height: 50px;
+    font-size: 35px;
+    color: black;
+}
+#down {
+    height: 100px;
+    font-size: 50px;
+    color: gray;
+}
+.keyboard {
+    width: 460px;
+    height: 408px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+button {
+    width: 115px;
+    height: 68px;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-size: 26px;
+}
+.number {
+    background-color: #a1bbe6;
+}
+.number:hover {
+    background-color: #779fe0;
+}
+.number:active {
+    background-color: #779fe0;
+}
+.operation {
+    background-color: #dce0e6;
+}
+.operation:hover {
+    background-color: #bdc2c9;
+}
+.operation:active {
+    background-color: #bdc2c9;
+}
