@@ -7,9 +7,6 @@ import { OperationsService } from '../operations/operations.service';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-
-  previous: string;
-  current: string;
   operatorClicked: boolean;
   equalClicked: boolean;
   dotWritten: boolean;
@@ -18,9 +15,7 @@ export class CalculatorComponent implements OnInit {
   preOperator: string;
   operators = ['÷','×','-','+','='];
 
-  constructor(private operations: OperationsService) {
-    this.previous = '';
-    this.current = '0';
+  constructor(public operations: OperationsService) {
     this.operator = '';
     this.preOperator = '';
     this.operatorClicked = false;
@@ -35,8 +30,8 @@ export class CalculatorComponent implements OnInit {
   writeDigit(digit: string) {
     if(this.operatorClicked || this.equalClicked) {
       if(this.equalClicked && !this.operatorClicked)
-        this.previous = this.current;
-      this.current = '0';
+        this.operations.previous = this.operations.current;
+      this.operations.current = '0';
       this.operatorClicked = false;
       this.equalClicked = false;
       this.clearAllPrevious = false;
@@ -44,13 +39,13 @@ export class CalculatorComponent implements OnInit {
     }
   
     if(digit==='0') {
-        if(this.current!=='0')
-          this.current += digit;
+        if(this.operations.current!=='0')
+          this.operations.current += digit;
     } else {
-      if(this.current!=='0')
-        this.current += digit;
+      if(this.operations.current!=='0')
+        this.operations.current += digit;
       else
-        this.current = digit;     
+        this.operations.current = digit;     
     }
   }
 
@@ -59,20 +54,20 @@ export class CalculatorComponent implements OnInit {
     this.operator = symbol;
     if(!this.operatorClicked) { 
       this.operatorClicked = true;
-      if(this.previous !== '') {
-        if(this.preOperator !== '=' && (this.previous !== this.current))
+      if(this.operations.previous !== '') {
+        if(this.preOperator !== '=' && (this.operations.previous !== this.operations.current))
           this.calculate();
       }
-      this.previous = this.current + symbol;
+      this.operations.previous = this.operations.current + symbol;
     }
   }
 
   sign() {
-    if (this.current !== '') {
-      this.current =
-        this.current.charAt(0) === "-"
-          ? this.current.slice(1)
-          : this.current = '-' + this.current;
+    if (this.operations.current !== '') {
+      this.operations.current =
+        this.operations.current.charAt(0) === "-"
+          ? this.operations.current.slice(1)
+          : this.operations.current = '-' + this.operations.current;
     }
   }
 
@@ -87,31 +82,31 @@ export class CalculatorComponent implements OnInit {
     if(this.clearAllPrevious) {
       this.clearAll();
     } else {
-      this.current = '0';
+      this.operations.current = '0';
     }
   }
 
   clearAll() {
     this.equalClicked = false;
-    this.previous = '';
-    this.current = '0';
+    this.operations.previous = '';
+    this.operations.current = '0';
   }
 
   backSpace() {
     if(this.clearAllPrevious) {
       this.clearAll();
     } else {
-      if(this.current.length > 1) {
-        this.current = this.current.slice(0,-1);
+      if(this.operations.current.length > 1) {
+        this.operations.current = this.operations.current.slice(0,-1);
       } else {
-        this.current = '0';
+        this.operations.current = '0';
       }
     }  
   }
 
   calculate() {
-    var previous = this.previous;
-    var y = parseFloat(this.current);
+    var previous = this.operations.previous;
+    var y = parseFloat(this.operations.current);
     this.clearAllPrevious = true;
     switch(this.preOperator) {
       case this.operators[0]:
@@ -171,8 +166,8 @@ export class CalculatorComponent implements OnInit {
     this.operator = '=';
     if(!this.equalClicked) { 
       this.equalClicked = true;
-      this.previous = this.previous + this.current + '=';
-      if(this.previous !== '') {
+      this.operations.previous = this.operations.previous + this.operations.current + '=';
+      if(this.operations.previous !== '') {
         if(this.preOperator !== '=')
           this.calculate();
       }

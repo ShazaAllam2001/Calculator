@@ -21,6 +21,10 @@ public class AdditionalOperations extends BasicOperations implements IAdditional
     @GetMapping("/squareRoot")
     @Override
     public double squareRoot(@RequestParam double x) {
+        double result = Math.sqrt(x);
+        if(Double.isNaN(result)) {
+            throw new RuntimeException("Can not get the square root of a negative number!");
+        }
         return Math.sqrt(x);
     }
 
