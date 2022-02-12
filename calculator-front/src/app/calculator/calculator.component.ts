@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { OperationsService } from '../operations/operations.service';
 
 @Component({
   selector: 'app-calculator',
@@ -18,7 +18,7 @@ export class CalculatorComponent implements OnInit {
   preOperator: string;
   operators = ['÷','×','-','+','='];
 
-  constructor(private http: HttpClient) {
+  constructor(private operations: OperationsService) {
     this.previous = '';
     this.current = '0';
     this.operator = '';
@@ -117,12 +117,12 @@ export class CalculatorComponent implements OnInit {
       case this.operators[0]:
         var temp = previous.split(this.operators[0]); 
         var x = parseFloat(temp[0]);
-        this.divide(x,y);
+        this.operations.divide(x,y);
         break;
       case this.operators[1]:
         var temp = previous.split(this.operators[1]); 
         x = parseFloat(temp[0]);
-        this.multiply(x,y);
+        this.operations.multiply(x,y);
         break;
       case this.operators[2]:
         var temp = previous.split(this.operators[2]);
@@ -130,12 +130,12 @@ export class CalculatorComponent implements OnInit {
           x = -parseFloat(temp[1]);
         else 
           x = parseFloat(temp[0]); 
-        this.subtract(x,y);
+        this.operations.subtract(x,y);
         break;
       case this.operators[3]:
         var temp = previous.split(this.operators[3]); 
         x = parseFloat(temp[0]);
-        this.add(x,y);
+        this.operations.add(x,y);
         break;
       case this.operators[4]:
         break;
@@ -149,16 +149,16 @@ export class CalculatorComponent implements OnInit {
     this.equalClicked = true;
     switch(operation) {
       case 'percent':
-        this.percent();
+        this.operations.percent();
         break;
       case 'inverse':
-        this.inverse();
+        this.operations.inverse();
         break;
       case 'square':
-        this.square();
+        this.operations.square();
         break;
       case 'squareRoot':
-        this.squareRoot();
+        this.operations.squareRoot();
         break;
       default:
         throw "Undefined operation!";
@@ -179,129 +179,4 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  // request Calculations API
-  add(x: number, y: number) {
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/add',{
-      responseType: 'text',
-      params:{
-        x: x,
-        y: y
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-    });
-  }
-  subtract(x: number, y: number) {
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/subtract',{
-      responseType: 'text',
-      params:{
-        x: x,
-        y: y
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-    });
-  }
-  multiply(x: number, y: number) {
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/multiply',{
-      responseType: 'text',
-      params:{
-        x: x,
-        y: y
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-    });
-  }
-  divide(x: number, y: number) {
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/divide',{
-      responseType: 'text',
-      params:{
-        x: x,
-        y: y
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-    });
-  }
-  percent() {
-    var x = this.current;
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/percent',{
-      responseType: 'text',
-      params:{
-        x: x,
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-        this.previous = this.current;
-    });
-  }
-  inverse() {
-    var x = this.current;
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/inverse',{
-      responseType: 'text',
-      params:{
-        x: x,
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-        this.previous = this.current;
-    });
-  }
-  square() {
-    var x = this.current;
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/square',{
-      responseType: 'text',
-      params:{
-        x: x,
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-        this.previous = this.current;
-    });
-  }
-  squareRoot(){
-    var x = this.current;
-    var result: string | undefined;
-    this.http.get('http://localhost:8080/operations/squareRoot',{
-      responseType: 'text',
-      params:{
-        x: x,
-      },
-      observe: 'response'
-    }).subscribe(response=>{
-      result = response.body?.toString();
-      if(result)
-        this.current = result;
-        this.previous = this.current;
-    });
-  }
 }

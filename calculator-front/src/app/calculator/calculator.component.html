@@ -1,44 +1,44 @@
 <div id="root">
     <div class="wrapper">
-      <div class="display-screen">
-        <div class="row" id="up">{{this.previous}}</div>
-        <div class="row" id="down">{{this.current}}</div>
-      </div>
+        <div class="display-screen">
+            <div class="row" id="up">{{this.operations.previous}}</div>
+            <div class="row" id="down">{{this.operations.current}}</div>
+        </div>
     </div>
 
     <div class="wrapper">
-      <div class="keyboard"> 
-        <button (click)="applyOperarion('percent')" class="operation">%</button>
-        <button (click)="clear()" class="operation">CE</button>
-        <button (click)="clearAll()" class="operation">C</button>
-        <button (click)="backSpace()" class="operation">
+        <div class="keyboard">
+            <button (click)="applyOperarion('percent')" class="operation">%</button>
+            <button (click)="clear()" class="operation">CE</button>
+            <button (click)="clearAll()" class="operation">C</button>
+            <button (click)="backSpace()" class="operation">
           <img src="../assets/icons8-clear-symbol-50.png" width="40" height="40"/>
         </button>
-        
-        <button (click)="applyOperarion('inverse')"class="operation"><i>1/x</i></button>
-        <button (click)="applyOperarion('square')" class="operation"><i>x<span>&nbsp;</span><sup>2</sup></i></button>
-        <button (click)="applyOperarion('squareRoot')"class="operation"><i><span>&radic; &nbsp;</span>x</i></button>
-        <button (click)="writeOperation('÷')" class="operation"><span>&divide;</span></button>
-        
-        <button (click)="writeDigit('7')" class="number">7</button>
-        <button (click)="writeDigit('8')" class="number">8</button>
-        <button (click)="writeDigit('9')" class="number">9</button>
-        <button (click)="writeOperation('×')" class="operation"><span>&times;</span></button>
-        
-        <button (click)="writeDigit('4')" class="number">4</button>
-        <button (click)="writeDigit('5')" class="number">5</button>
-        <button (click)="writeDigit('6')" class="number">6</button>
-        <button (click)="writeOperation('-')" class="operation"><span>&minus;</span></button>
-        
-        <button (click)="writeDigit('1')" class="number">1</button>
-        <button (click)="writeDigit('2')" class="number">2</button>
-        <button (click)="writeDigit('3')" class="number">3</button>
-        <button (click)="writeOperation('+')" class="operation"><span>&plus;</span></button>
-        
-        <button (click)="sign()" class="number">+/-</button>
-        <button (click)="writeDigit('0')" class="number">0</button>
-        <button (click)="dot()" class="number"><b>.</b></button>
-        <button (click)="equal()" class="operation">=</button>   
-      </div>
+
+            <button (click)="applyOperarion('inverse')" class="operation"><i>1/x</i></button>
+            <button (click)="applyOperarion('square')" class="operation"><i>x<span>&nbsp;</span><sup>2</sup></i></button>
+            <button (click)="applyOperarion('squareRoot')" class="operation"><i><span>&radic; &nbsp;</span>x</i></button>
+            <button (click)="writeOperation('÷')" class="operation"><span>&divide;</span></button>
+
+            <button (click)="writeDigit('7')" class="number">7</button>
+            <button (click)="writeDigit('8')" class="number">8</button>
+            <button (click)="writeDigit('9')" class="number">9</button>
+            <button (click)="writeOperation('×')" class="operation"><span>&times;</span></button>
+
+            <button (click)="writeDigit('4')" class="number">4</button>
+            <button (click)="writeDigit('5')" class="number">5</button>
+            <button (click)="writeDigit('6')" class="number">6</button>
+            <button (click)="writeOperation('-')" class="operation"><span>&minus;</span></button>
+
+            <button (click)="writeDigit('1')" class="number">1</button>
+            <button (click)="writeDigit('2')" class="number">2</button>
+            <button (click)="writeDigit('3')" class="number">3</button>
+            <button (click)="writeOperation('+')" class="operation"><span>&plus;</span></button>
+
+            <button (click)="sign()" class="number">+/-</button>
+            <button (click)="writeDigit('0')" class="number">0</button>
+            <button (click)="dot()" class="number"><b>.</b></button>
+            <button (click)="equal()" class="operation">=</button>
+        </div>
     </div>
-</div> 
+</div>

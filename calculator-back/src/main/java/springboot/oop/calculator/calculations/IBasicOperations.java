@@ -1,6 +1,6 @@
 package springboot.oop.calculator.calculations;
 
-public interface IOperations {
+public interface IBasicOperations {
     // Add operation
     public double add(double x, double y);
 
@@ -12,17 +12,4 @@ public interface IOperations {
 
     // divide operation
     public double divide(double x, double y);
-
-    // percent operation
-    public double percent(double x);
-
-    // inverse operation
-    public double inverse(double x);
-
-    // square operation
-    public double square(double x);
-
-    // square root operation
-    public double squareRoot(double x);
-
 }
