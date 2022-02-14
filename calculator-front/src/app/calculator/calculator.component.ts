@@ -113,10 +113,6 @@ export class CalculatorComponent implements OnInit {
         var temp = previous.split(this.operators[0]); 
         var x = parseFloat(temp[0]);
         this.operations.divide(x,y);
-        if(this.operations.current==="Can not divide by zero!") {
-          this.clearAll();
-          this.operations.current = "Can not divide by zero!";
-        }
         break;
       case this.operators[1]:
         var temp = previous.split(this.operators[1]); 
@@ -152,20 +148,12 @@ export class CalculatorComponent implements OnInit {
         break;
       case 'inverse':
         this.operations.inverse();
-        if(this.operations.current==="Can not divide by zero!") {
-          this.clearAll();
-          this.operations.current = "Can not divide by zero!";
-        }
         break;
       case 'square':
         this.operations.square();
         break;
       case 'squareRoot':
         this.operations.squareRoot();
-        if(this.operations.current==="Can not get square root of a negative number!") {
-          this.clearAll();
-          this.operations.current = "Can not get square root of a negative number!";
-        }
         break;
       default:
         throw "Undefined operation!";
