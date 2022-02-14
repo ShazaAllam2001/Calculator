@@ -2,15 +2,15 @@ package springboot.oop.calculator.calculations;
 
 public interface IAdditionalOperations {
     // percent operation
-    public double percent(double x);
+    String percent(double x);
 
     // inverse operation
-    public double inverse(double x);
+    String inverse(double x);
 
     // square operation
-    public double square(double x);
+    String square(double x);
 
     // square root operation
-    public double squareRoot(double x);
+    String squareRoot(double x);
 
 }

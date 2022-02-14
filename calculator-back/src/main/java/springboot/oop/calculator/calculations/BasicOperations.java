@@ -8,29 +8,29 @@ import org.springframework.web.bind.annotation.*;
 public class BasicOperations implements IBasicOperations {
     @GetMapping("/add")
     @Override
-    public double add(@RequestParam double x, @RequestParam double y) {return x+y;}
+    public String add(@RequestParam double x, @RequestParam double y) {return String.valueOf(x+y);}
 
     @GetMapping("/subtract")
     @Override
-    public double subtract(@RequestParam double x, @RequestParam double y) {
-        return x-y;
+    public String subtract(@RequestParam double x, @RequestParam double y) {
+        return String.valueOf(x-y);
     }
 
     @GetMapping("/multiply")
     @Override
-    public double multiply(@RequestParam double x, @RequestParam double y) {
-        return x*y;
+    public String multiply(@RequestParam double x, @RequestParam double y) {
+        return String.valueOf(x*y);
     }
 
     @GetMapping("/divide")
     @Override
-    public double divide(@RequestParam double x, @RequestParam double y) {
+    public String divide(@RequestParam double x, @RequestParam double y) {
         if(x==0 && y==0) {
-            throw new RuntimeException("Undefined!");
+            return "Undefined!";
         } else if(y==0) {
-            throw new RuntimeException("Can not divide by zero!");
+            return "Can not divide by zero!";
         }
-        return x/y;
+        return String.valueOf(x/y);
     }
 
 }

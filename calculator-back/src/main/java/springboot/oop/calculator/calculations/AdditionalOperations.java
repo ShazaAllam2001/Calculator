@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.*;
 public class AdditionalOperations extends BasicOperations implements IAdditionalOperations {
     @GetMapping("/percent")
     @Override
-    public double percent(@RequestParam double x) { return divide(x,100); }
+    public String percent(@RequestParam double x) { return divide(x,100); }
 
     @GetMapping("/inverse")
     @Override
-    public double inverse(@RequestParam double x) { return divide(1,x); }
+    public String inverse(@RequestParam double x) { return divide(1,x); }
 
     @GetMapping("/square")
     @Override
-    public double square(@RequestParam double x) { return multiply(x,x);}
+    public String square(@RequestParam double x) { return multiply(x,x);}
 
     @GetMapping("/squareRoot")
     @Override
-    public double squareRoot(@RequestParam double x) {
+    public String squareRoot(@RequestParam double x) {
         double result = Math.sqrt(x);
         if(Double.isNaN(result)) {
-            throw new RuntimeException("Can not get the square root of a negative number!");
+            return "Can not get square root of a negative number!";
         }
-        return Math.sqrt(x);
+        return String.valueOf(result);
     }
 
 }
