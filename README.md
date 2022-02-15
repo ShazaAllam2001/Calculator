@@ -1,6 +1,8 @@
 # Online Calculator
 This is an online calculator built using Angular.js (frontend) & SpringBoot (backend).
 
+![Calculator](/readme/calc-front.jpg)
+
 ### Calculator features
 - This calculator simulates most of what happens in Windows calculator.
 - Calculates the arithmetic operations incrementally.
@@ -12,6 +14,6 @@ This is an online calculator built using Angular.js (frontend) & SpringBoot (bac
 - Button C: Delete the current input and all the previous ones.
 
 ### Calculator deployed using:
-*__GithubPages__* for [frontend](https://github.com/ShazaAllam2001/Calculator/) &
+*__GithubPages__* for [frontend](https://shazaallam2001.github.io/Calculator/) &
 *__Herkou__* for [backend](https://online-calculator-api-shaza.herokuapp.com/)
 
