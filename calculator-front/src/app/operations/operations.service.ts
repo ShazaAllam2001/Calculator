@@ -5,6 +5,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class OperationsService {
+  URL: string = 'https://online-calculator-api-shaza.herokuapp.com/';
   previous: string;
   current: string;
 
@@ -15,7 +16,7 @@ export class OperationsService {
 
   add(x: number, y: number) {
     var result: string | undefined;
-    this.http.get('http://localhost:8080/BasicOperations/add',{
+    this.http.get(this.URL + 'BasicOperations/add',{
       responseType: 'text',
       params:{
         x: x,
@@ -31,7 +32,7 @@ export class OperationsService {
 
   subtract(x: number, y: number) {
     var result: string | undefined;
-    this.http.get('http://localhost:8080/BasicOperations/subtract',{
+    this.http.get(this.URL + 'BasicOperations/subtract',{
       responseType: 'text',
       params:{
         x: x,
@@ -47,7 +48,7 @@ export class OperationsService {
 
   multiply(x: number, y: number) {
     var result: string | undefined;
-    this.http.get('http://localhost:8080/BasicOperations/multiply',{
+    this.http.get(this.URL + 'BasicOperations/multiply',{
       responseType: 'text',
       params:{
         x: x,
@@ -63,7 +64,7 @@ export class OperationsService {
 
   divide(x: number, y: number) {
     var result: string | undefined;
-    this.http.get('http://localhost:8080/BasicOperations/divide',{
+    this.http.get(this.URL + 'BasicOperations/divide',{
       responseType: 'text',
       params:{
         x: x,
@@ -80,7 +81,7 @@ export class OperationsService {
   percent() {
     var x = this.current;
     var result: string | undefined;
-    this.http.get('http://localhost:8080/AdditionalOperations/percent',{
+    this.http.get(this.URL + 'AdditionalOperations/percent',{
       responseType: 'text',
       params:{
         x: x,
@@ -97,7 +98,7 @@ export class OperationsService {
   inverse() {
     var x = this.current;
     var result: string | undefined;
-    this.http.get('http://localhost:8080/AdditionalOperations/inverse',{
+    this.http.get(this.URL + 'AdditionalOperations/inverse',{
       responseType: 'text',
       params:{
         x: x,
@@ -114,7 +115,7 @@ export class OperationsService {
   square() {
     var x = this.current;
     var result: string | undefined;
-    this.http.get('http://localhost:8080/AdditionalOperations/square',{
+    this.http.get(this.URL + 'AdditionalOperations/square',{
       responseType: 'text',
       params:{
         x: x,
@@ -131,7 +132,7 @@ export class OperationsService {
   squareRoot(){
     var x = this.current;
     var result: string | undefined;
-    this.http.get('http://localhost:8080/AdditionalOperations/squareRoot',{
+    this.http.get(this.URL + 'AdditionalOperations/squareRoot',{
       responseType: 'text',
       params:{
         x: x,
