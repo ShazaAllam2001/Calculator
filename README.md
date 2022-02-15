@@ -12,6 +12,6 @@ This is an online calculator built using Angular.js (frontend) & SpringBoot (bac
 - Button C: Delete the current input and all the previous ones.
 
 ### Calculator deployed using:
-*__GithubPages__* for [frontend]()
-*__Herkou__* for [backend]()
+*__GithubPages__* for [frontend](https://github.com/ShazaAllam2001/Calculator/) &
+*__Herkou__* for [backend](https://online-calculator-api-shaza.herokuapp.com/)
 
