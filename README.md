@@ -1,5 +1,6 @@
 # Online Calculator
 This is an online calculator built using Angular.js (frontend) & SpringBoot (backend).
+![Calculator](/readme/calc-front.jpg)
 
 ### Calculator features
 - This calculator simulates most of what happens in Windows calculator.
