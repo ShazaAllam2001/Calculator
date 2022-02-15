@@ -3,7 +3,7 @@ package springboot.oop.calculator.calculations;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/AdditionalOperations")
 public class AdditionalOperations extends BasicOperations implements IAdditionalOperations {
     @GetMapping("/percent")
